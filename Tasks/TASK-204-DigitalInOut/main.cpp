@@ -13,14 +13,16 @@
 
 //BusInOut Traffic_Lights_2(PC_7,PC_8,PC_9);
 DigitalInOut grnLED(TRAF_GRN2_PIN, PinDirection::PIN_OUTPUT, PinMode::OpenDrainNoPull, 0);
-
+DigitalInOut redLED(TRAF_RED2_PIN, PinDirection::PIN_OUTPUT, PinMode::OpenDrainNoPull, 0);
 int main()
 {
     //Note the logic
     while (true) {
         grnLED = 1;
+        redLED = !grnLED;
         wait_us(1000000);
         grnLED = 0;
+        redLED = !grnLED;
         wait_us(1000000);
     }
 }
