@@ -1,20 +1,9 @@
 #include "mbed.h"
+#include "complex_C.hpp"
 
-typedef struct {
-  double real;
-  double imag;
-} ComplexNumber_C;
 
-ComplexNumber_C complexAdd(const ComplexNumber_C a, const ComplexNumber_C b) {
-    ComplexNumber_C y = a;
-    y.real += b.real;
-    y.imag += b.imag;
-    return y;
-}
 
-void complexDisplay(const char *strName, const ComplexNumber_C u) {
-    printf("%s = %f + j%f\n", strName, u.real, u.imag);
-}
+
 
 // TASK - write and test complexConjugate, complexNegate, complexSubtract, complexMagnitude, complexMultiply and complexDivide
 
@@ -24,13 +13,34 @@ int main() {
     //Create instance of a complex number
     ComplexNumber_C p = {2.0, 3.0};
     ComplexNumber_C q = {1.0, 1.0};
-    complexDisplay("p", p);
-    complexDisplay("q", q);
+    //complexDisplay("p", p);
+    //complexDisplay("q", q);
  
     ComplexNumber_C sum = complexAdd(p, q);
-    complexDisplay("p+q", sum);
+    ComplexNumber_C sub = complexSubtract(p, q);
+    ComplexNumber_C mult = complexMultiply(p, q);
+    ComplexNumber_C div = complexDivide(p, q);
+    ComplexNumber_C neg = complexNegate(p);
+    float mag = complexMagnitude(p);
+    ComplexNumber_C con = complexConjugate(p);
 
-    
-    while (true) {
+    while(true){
+        complexDisplay("p+q", sum);
+        wait_us(5000000);
+        complexDisplay("p-q", sub);
+        wait_us(5000000);
+        complexDisplay("p*q", mult);
+        wait_us(5000000);
+        complexDisplay("p/q", div);
+        wait_us(5000000);
+        complexDisplay("-p", neg);
+        wait_us(5000000);
+        floatDisplay("mag p = %f",mag);
+        wait_us(5000000);
+        complexDisplay("p con", con);
+        wait_us(5000000);
+    }
+    while(true){ 
+
     }
 }
