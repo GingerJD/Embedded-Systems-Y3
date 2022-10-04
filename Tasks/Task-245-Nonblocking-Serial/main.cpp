@@ -1,7 +1,7 @@
 #include "uop_msb.h"
 #include <chrono>
 using namespace uop_msb;
-
+LCD_16X2_DISPLAY display;
 #define WAIT_TIME_MS 100 
 DigitalOut led1(LED1);
 DigitalOut led2(LED2);
@@ -59,11 +59,13 @@ int main()
                 break;
             case '1':
                 //Switch on buzzer
-                buzz.playTone("A");
+                //buzz.playTone("A");
+                display.printf("BUZZ");
                 break;
             case '2':
                 //Switch off buzzer
-                buzz.rest();
+                //buzz.rest();
+                display.cls();
                 break;
             default:
                 //Echo typed character to the terminal

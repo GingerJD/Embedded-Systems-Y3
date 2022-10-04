@@ -1,6 +1,8 @@
 #include "uop_msb.h"
 #include <chrono>
+#include <ratio>
 using namespace uop_msb;
+LCD_16X2_DISPLAY display;
 
 BusIn buttons(BTN1_PIN, BTN2_PIN, BTN3_PIN, BTN4_PIN);
 // DigitalIn buttonA(BTN1_PIN);    //ButtonA is synonamous with buttons[0]
@@ -99,8 +101,10 @@ int main()
             disp = count;              
         }
 
+        microseconds flash_rate = 90ms + (count+1)*10ms;
+        display.printf("%dms\n \n",(90 + (count+1)*10));
         // LED
-        if (tm >= 250ms) {
+        if (tm >= flash_rate) {
             greenLED = !greenLED;
             tmr.reset();
         }
