@@ -3,7 +3,7 @@
 #include <ratio>
 using namespace uop_msb;
 using namespace chrono;
-
+LCD_16X2_DISPLAY display;
 //Count variable
 int counter=0;
 
@@ -39,7 +39,7 @@ int main()
     while (true) {
         sleep();
 
-        printf("I have been woken %d times\n", ++counter);
+        display.printf("I have been\nwoken %d times\n", ++counter);
     }
 }
 
