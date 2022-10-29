@@ -62,8 +62,9 @@ public:
     // Override + in the parent class
     ComplexNumber operator+(ComplexNumber& u) {
         ComplexNumber result;
-
-        //TO BE DONE
+        result = *this;
+        result += u;
+        
 
         return result;
     }

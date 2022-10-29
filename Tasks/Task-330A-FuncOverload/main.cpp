@@ -39,6 +39,10 @@ public:
         _real = stod(strVal);
     }
 
+    void setValue(DoubleNumber u){
+        _real = u.magnitude();
+    }
+
     double getValue() {
         return _real;
     }
@@ -58,6 +62,7 @@ int main()
 
     //setValue function overloading  
     n1.setValue(10);
+    n0.setValue(n1);
     n2.setValue("-3.0");
 
     cout << n0.getValue() + n1.getValue() + n2.getValue() << endl;
